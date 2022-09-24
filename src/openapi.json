@@ -1,0 +1,1781 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Binar commerce Open API",
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/users/signup": {
+      "post": {
+        "requestBody": {
+          "description": "Payload for creating a new user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "binar"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "binar@mail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "rahasia"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "J1234JK"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "binar"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "binar@mail.com"
+                        },
+                        "password": {
+                          "type": "string",
+                          "example": "rahasia"
+                        },
+                        "kota": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "alamat": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "no_hp": {
+                          "type": "integer",
+                          "example": null
+                        },
+                        "img": {
+                          "type": "string",
+                          "format": "binary",
+                          "example": ""
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "New user is created"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "requestBody": {
+          "description": "Payload for creating a new user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "binar@mail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "rahasia"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User login success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "J1234JK"
+                        },
+                        "token": {
+                          "type": "string",
+                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "binar"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "binar@mail.com"
+                        },
+                        "kota": {
+                          "type": "string",
+                          "example": "Jakarta"
+                        },
+                        "alamat": {
+                          "type": "string",
+                          "example": "jalan perjuanagan no.17"
+                        },
+                        "no_hp": {
+                          "type": "integer",
+                          "example": 6281234567890
+                        },
+                        "img": {
+                          "type": "string",
+                          "format": "binary",
+                          "example": "/1312klsfjk.png"
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User login success"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Token data access",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "description": "user key",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "U123UU"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get user data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "J1234JK"
+                        },
+
+                        "name": {
+                          "type": "string",
+                          "example": "binar"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "binar@mail.com"
+                        },
+                        "kota": {
+                          "type": "string",
+                          "example": "Jakarta"
+                        },
+                        "alamat": {
+                          "type": "string",
+                          "example": "jalan perjuanagan no.17"
+                        },
+                        "no_hp": {
+                          "type": "integer",
+                          "example": 6281234567890
+                        },
+                        "img": {
+                          "type": "string",
+                          "example": "/1312klsfjk.png"
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success get user data"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "description": "Payload for completing user data",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "binar"
+                  },
+                  "kota": {
+                    "type": "string",
+                    "example": "Jakarta"
+                  },
+                  "alamat": {
+                    "type": "string",
+                    "example": "jalan perjuangan no.17"
+                  },
+                  "no_hp": {
+                    "type": "integer",
+                    "example": 6281234567890
+                  },
+                  "img": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Data completion success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "J1234JK"
+                        },
+
+                        "name": {
+                          "type": "string",
+                          "example": "binar"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "binar@mail.com"
+                        },
+                        "kota": {
+                          "type": "string",
+                          "example": "Jakarta"
+                        },
+                        "alamat": {
+                          "type": "string",
+                          "example": "jalan perjuanagan no.17"
+                        },
+                        "no_hp": {
+                          "type": "integer",
+                          "example": 6281234567890
+                        },
+                        "img": {
+                          "type": "string",
+                          "example": "/1312klsfjk.png"
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "User Data completion success"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "lastKey",
+            "description": "Last returned product key for the next fetch pagination. initial value is lastKey='''' ",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "16uqgnzbp4jp"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit how much product per page",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "description": "Product name",
+            "schema": {
+              "type": "string",
+              "example": "casio"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get all products from sellers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "seller": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "example": "S1234SS"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "binar"
+                              },
+                              "kota": {
+                                "type": "string",
+                                "example": "Jakarta"
+                              }
+                            }
+                          },
+                          "key": {
+                            "type": "string",
+                            "example": "P1234PP"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Garnier"
+                          },
+                          "category": {
+                            "type": "string",
+                            "example": "Health"
+                          },
+                          "price": {
+                            "type": "integer",
+                            "example": 30000
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "Mengatasi jerawat"
+                          },
+                          "img": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "example": "/sfs2242lajflas.png"
+                            }
+                          },
+                          "slug": {
+                            "type": "string",
+                            "example": "/garnier"
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "active"
+                          }
+                        }
+                      }
+                    },
+                    "lastKey": {
+                      "type": "string",
+                      "example": "16uqgnzbp4jp"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success get all products from sellers"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Success get all products from sellers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "array"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "There's no product with that name"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/category/{category}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "category",
+            "description": "Category name",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Health"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get products from sellers by category",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "seller": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "S1234SS"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "binar"
+                              },
+                              "kota": {
+                                "type": "string",
+                                "example": "Jakarta"
+                              }
+                            }
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "P1234PP"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Garnier"
+                          },
+                          "category": {
+                            "type": "string",
+                            "example": "Health"
+                          },
+                          "price": {
+                            "type": "integer",
+                            "example": 30000
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "Mengatasi jerawat"
+                          },
+                          "img": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "example": "/sfs2242lajflas.png"
+                            }
+                          },
+                          "slug": {
+                            "type": "string",
+                            "example": "/garnier"
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "active"
+                          }
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success get products from sellers by category"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/products": {
+      "get": {
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Token data access",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "description": "Product status. active/interested/sold. NOTE: for status=interested use  GET /users/bids instead",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "active"
+            }
+          },
+          {
+            "in": "query",
+            "name": "lastKey",
+            "description": "Last returned product key for the next fetch pagination. initial value is lastKey='''' ",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "16uqgnzbp4jp"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit how much product per page",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get products from seller by status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "seller": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "S1234SS"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "binar"
+                              },
+                              "kota": {
+                                "type": "string",
+                                "example": "Jakarta"
+                              }
+                            }
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "P1234PP"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Garnier"
+                          },
+                          "category": {
+                            "type": "string",
+                            "example": "Health"
+                          },
+                          "price": {
+                            "type": "integer",
+                            "example": 30000
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "Mengatasi jerawat"
+                          },
+                          "img": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "example": "/sfs2242lajflas.png"
+                            }
+                          },
+                          "slug": {
+                            "type": "string",
+                            "example": "/garnier"
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "active"
+                          }
+                        }
+                      }
+                    },
+                    "lastKey": {
+                      "type": "string",
+                      "example": "16uqgnzbp4jp"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success get products from seller by status"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Token data access",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Payload for submit a new product",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Garnier"
+                  },
+                  "category": {
+                    "type": "string",
+                    "example": "Health"
+                  },
+                  "price": {
+                    "type": "integer",
+                    "example": 30000
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Mengatasi jerawat"
+                  },
+                  "img": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary",
+                      "example": "/sfs2242lajflas.png"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Submit a new product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "example": "P1234PP"
+                        },
+                        "seller": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "S1234SS"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "binar"
+                            },
+                            "kota": {
+                              "type": "string",
+                              "example": "Jakarta"
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Garnier"
+                        },
+                        "category": {
+                          "type": "string",
+                          "example": "Health"
+                        },
+                        "price": {
+                          "type": "integer",
+                          "example": 30000
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "Mengatasi jerawat"
+                        },
+                        "img": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "/sfs2242lajflas.png"
+                          }
+                        },
+                        "slug": {
+                          "type": "string",
+                          "example": "/garnier"
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "active"
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Submit a new product success"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/products/interested": {
+      "get": {
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Token data access",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get interested products from seller",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "seller": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "example": "S1234SS"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "binar"
+                              },
+                              "kota": {
+                                "type": "string",
+                                "example": "Jakarta"
+                              }
+                            }
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "P1234PP"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Garnier"
+                          },
+                          "category": {
+                            "type": "string",
+                            "example": "Health"
+                          },
+                          "price": {
+                            "type": "integer",
+                            "example": 30000
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "Mengatasi jerawat"
+                          },
+                          "img": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "example": "/sfs2242lajflas.png"
+                            }
+                          },
+                          "slug": {
+                            "type": "string",
+                            "example": "/garnier"
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "active"
+                          }
+                        }
+                      }
+                    },
+                    "lastKey": {
+                      "type": "string",
+                      "example": "16uqgnzbp4jp"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success get interested products from seller"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/bids": {
+      "get": {
+        "description": "Get bids by product key and status and user",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Token data access",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          },
+          {
+            "in": "query",
+            "name": "key",
+            "required": false,
+            "description": "Product key",
+            "schema": {
+              "type": "string",
+              "example": "P123PP"
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "description": "Bid status. pending/rejected/accepted",
+            "schema": {
+              "type": "string",
+              "example": "pending"
+            }
+          },
+          {
+            "in": "query",
+            "name": "buyerKey",
+            "required": false,
+            "description": "The buyer key",
+            "schema": {
+              "type": "string",
+              "example": "B123BBB"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get bids by product key and status and user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "example": "T123TT"
+                          },
+                          "buyer": {
+                            "title": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "example": "S1234SS"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "bulan"
+                              },
+                              "kota": {
+                                "type": "string",
+                                "example": "Jakarta"
+                              }
+                            }
+                          },
+                          "bid": {
+                            "type": "integer",
+                            "example": 35000
+                          },
+                          "product": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "example": "P123PP"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "garnier"
+                              },
+                              "category": {
+                                "type": "string",
+                                "example": "health"
+                              },
+                              "price": {
+                                "type": "integer",
+                                "example": 30000
+                              }
+                            }
+                          },
+                          "seller": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "example": "S1234SS"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "binar"
+                              },
+                              "kota": {
+                                "type": "string",
+                                "example": "Jakarta"
+                              }
+                            }
+                          },
+                          "postedAt": {
+                            "type": "integer",
+                            "example": 11827461234
+                          },
+                          "updatedAt": {
+                            "type": "integer",
+                            "example": 1092309819
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "pending"
+                          }
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success get bids by product key and status"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed get product bid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Failed get product bid. Need some query parameters"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Token data access",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Payload when making a bid. Need a product ID and Bid value",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "example": "P123PP"
+                  },
+                  "bid": {
+                    "type": "integer",
+                    "example": 35000
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Submit a new product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "example": "T123TT"
+                        },
+                        "buyer": {
+                          "title": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "example": "S1234SS"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "bulan"
+                            },
+                            "kota": {
+                              "type": "string",
+                              "example": "Jakarta"
+                            }
+                          }
+                        },
+                        "bid": {
+                          "type": "integer",
+                          "example": 35000
+                        },
+                        "product": {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "example": "P123PP"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "garnier"
+                            },
+                            "category": {
+                              "type": "string",
+                              "example": "health"
+                            },
+                            "price": {
+                              "type": "integer",
+                              "example": 30000
+                            }
+                          }
+                        },
+                        "seller": {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "example": "S1234SS"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "binar"
+                            },
+                            "kota": {
+                              "type": "string",
+                              "example": "Jakarta"
+                            }
+                          }
+                        },
+                        "postedAt": {
+                          "type": "integer",
+                          "example": 11827461234
+                        },
+                        "updatedAt": {
+                          "type": "integer",
+                          "example": 1092309819
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "pending"
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Submit a new bid for a product, success"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Token data access",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Payload for accepting or rejecting a bid. Need a ID bids and changed status. available status: pending || rejected || accepted || delivered || canceled",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "example": "P123PP"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "accepted"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Submit a new product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Update bid status success"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/notifications": {
+      "get": {
+        "description": "Get notifications data by user",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Token data access",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success get notifications by user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "example": "N123NN"
+                          },
+                          "user": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "example": "S123SS"
+                              }
+                            }
+                          },
+                          "product": {
+                            "type": "object",
+                            "properties": {
+                              "seller": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "example": "S1234SS"
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "example": "binar"
+                                  },
+                                  "kota": {
+                                    "type": "string",
+                                    "example": "Jakarta"
+                                  }
+                                }
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "P1234PP"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Garnier"
+                              },
+                              "category": {
+                                "type": "string",
+                                "example": "Health"
+                              },
+                              "price": {
+                                "type": "integer",
+                                "example": 30000
+                              },
+                              "description": {
+                                "type": "string",
+                                "example": "Mengatasi jerawat"
+                              },
+                              "img": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "example": "/sfs2242lajflas.png"
+                                }
+                              },
+                              "slug": {
+                                "type": "string",
+                                "example": "/garnier"
+                              },
+                              "status": {
+                                "type": "string",
+                                "example": "active"
+                              }
+                            }
+                          },
+                          "title": {
+                            "type": "string",
+                            "example": "Jam Tangan Casio Ditawar Rp. 250000"
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "Penawaran produk"
+                          },
+                          "postedAt": {
+                            "type": "integer",
+                            "example": 11827461234
+                          },
+                          "updatedAt": {
+                            "type": "integer",
+                            "example": 1092309819
+                          },
+                          "isRead": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "slug": {
+                            "type": "string",
+                            "example": "/product/{seller}/{keyProduct} || '' || /user/penawaran/{keyProduct}"
+                          }
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success get notifications by user"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "it's server task",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Token data access",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "create a new notification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "example": "N123NN"
+                        },
+                        "user": {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "example": "S123SS"
+                            }
+                          }
+                        },
+                        "product": {
+                          "type": "object",
+                          "properties": {
+                            "seller": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "example": "S1234SS"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "binar"
+                                },
+                                "kota": {
+                                  "type": "string",
+                                  "example": "Jakarta"
+                                }
+                              }
+                            },
+                            "id": {
+                              "type": "string",
+                              "example": "P1234PP"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Garnier"
+                            },
+                            "category": {
+                              "type": "string",
+                              "example": "Health"
+                            },
+                            "price": {
+                              "type": "integer",
+                              "example": 30000
+                            },
+                            "description": {
+                              "type": "string",
+                              "example": "Mengatasi jerawat"
+                            },
+                            "img": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "example": "/sfs2242lajflas.png"
+                              }
+                            },
+                            "slug": {
+                              "type": "string",
+                              "example": "/garnier"
+                            },
+                            "status": {
+                              "type": "string",
+                              "example": "active"
+                            }
+                          }
+                        },
+                        "title": {
+                          "type": "string",
+                          "example": "Jam Tangan Casio Ditawar Rp. 250000"
+                        },
+                        "type": {
+                          "type": "string",
+                          "example": "Penawaran produk"
+                        },
+                        "postedAt": {
+                          "type": "integer",
+                          "example": 11827461234
+                        },
+                        "updatedAt": {
+                          "type": "integer",
+                          "example": 1092309819
+                        },
+                        "isRead": {
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "slug": {
+                          "type": "string",
+                          "example": "/garnier"
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "A new notification is created"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Update notification isRead property to true by notification id",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Token data access",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Payload for updating notification isRead. need notification key",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "example": "N123NN"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success update notification isRead property to true",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "example": "N123NN"
+                        },
+                        "user": {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "example": "S123SS"
+                            }
+                          }
+                        },
+                        "product": {
+                          "type": "object",
+                          "properties": {
+                            "seller": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "example": "S1234SS"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "binar"
+                                },
+                                "kota": {
+                                  "type": "string",
+                                  "example": "Jakarta"
+                                }
+                              }
+                            },
+                            "id": {
+                              "type": "string",
+                              "example": "P1234PP"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Garnier"
+                            },
+                            "category": {
+                              "type": "string",
+                              "example": "Health"
+                            },
+                            "price": {
+                              "type": "integer",
+                              "example": 30000
+                            },
+                            "description": {
+                              "type": "string",
+                              "example": "Mengatasi jerawat"
+                            },
+                            "img": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "example": "/sfs2242lajflas.png"
+                              }
+                            },
+                            "slug": {
+                              "type": "string",
+                              "example": "/garnier"
+                            },
+                            "status": {
+                              "type": "string",
+                              "example": "active"
+                            }
+                          }
+                        },
+                        "title": {
+                          "type": "string",
+                          "example": "Jam Tangan Casio Ditawar Rp. 250000"
+                        },
+                        "type": {
+                          "type": "string",
+                          "example": "Penawaran produk"
+                        },
+                        "postedAt": {
+                          "type": "integer",
+                          "example": 11827461234
+                        },
+                        "updatedAt": {
+                          "type": "integer",
+                          "example": 1092309819
+                        },
+                        "isRead": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "slug": {
+                          "type": "string",
+                          "example": "/garnier"
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Success update notification isRead property to true"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
